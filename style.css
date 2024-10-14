@@ -88,10 +88,11 @@ body, html {
     z-index: 1000;
 }
 
-#attribution :link {
+a:link {
     color: white;
+    text-decoration: none;
 }
 
-#attribution :hover {
+a:hover {
     color: grey;
 }
