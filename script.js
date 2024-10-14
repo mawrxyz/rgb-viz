@@ -6,38 +6,33 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     const allLayers = Object.values(layers);
 
-    function showLayer(layer) {
-        // Hide all layers first
-        allLayers.forEach(img => img.style.display = 'none');
-
-        if (layer && layers[layer]) {
-            // Show the specified layer if it exists
-            layers[layer].style.display = 'block';
-        } else if (!layer) {
-            // If no layer is specified, show all layers (for "Original")
-            allLayers.forEach(img => img.style.display = 'block');
+    // Function to toggle visibility of a layer
+    function toggleLayer(layer) {
+        const img = layers[layer];
+        if (img.style.display === 'block') {
+            img.style.display = 'none'; // Hide the layer if it is visible
         } else {
-            console.warn("Layer not found:", layer); // Handle case where the layer is invalid
+            img.style.display = 'block'; // Show the layer if it is hidden
         }
     }
 
+    // Initially show all layers
+    function showAllLayers() {
+        allLayers.forEach(img => img.style.display = 'block');
+    }
+
+    // Add event listeners to toggle buttons
     document.querySelectorAll('#toggle div').forEach(button => {
         button.addEventListener('click', function() {
-            // Remove active class from all buttons
-            document.querySelectorAll('#toggle div').forEach(btn => btn.classList.remove('active'));
-            // Add active class to the clicked button
-            button.classList.add('active');
+            // Toggle the active class for the button
+            button.classList.toggle('active');
 
+            // Toggle the corresponding layer
             const dataLayer = button.getAttribute('data-layer');
-            if (dataLayer === 'allLayers') {
-                showLayer(null); // Pass null to show all layers
-            } else {
-                showLayer(dataLayer);
-            }
+            toggleLayer(dataLayer);
         });
     });
 
-    // Initialize by showing all layers and setting the "Original" button as active
-    showLayer(null); // Pass null to show all layers on initial load
-    document.querySelector('[data-layer="allLayers"]').classList.add('active');
+    // On page load, show all layers
+    showAllLayers();
 });

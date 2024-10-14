@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RGB Layer Toggle</title>
+    <title>RGB Bands of an Image</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -10,12 +10,13 @@
         <img id="redLayer" src="imgs/red_cat.png" class="image-layer">
         <img id="greenLayer" src="imgs/green_cat.png" class="image-layer">
         <img id="blueLayer" src="imgs/blue_cat.png" class="image-layer">
+        <div id="attribution">Image source: <a href="https://www.flickr.com/photos/mogret/4427404323/in/photostream/">᚛Tilly Mint ᚜ / Flickr</a>, licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY-NC-SA 2.0</a>
+        </div>
     </div>
     <div id="toggle">
-        <div data-layer="redLayer">Red</div>
-        <div data-layer="greenLayer">Green</div>
-        <div data-layer="blueLayer">Blue</div>
-        <div data-layer="allLayers">Original</div>
+        <div data-layer="redLayer" class="active">Red</div>
+        <div data-layer="greenLayer" class="active">Green</div>
+        <div data-layer="blueLayer" class="active">Blue</div>
     </div>
     <script src="script.js"></script>
 </body>
