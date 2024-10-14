@@ -96,3 +96,7 @@ a:link {
 a:hover {
     color: grey;
 }
+
+a:visited {
+    color: white;
+}
