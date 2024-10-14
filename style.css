@@ -93,10 +93,10 @@ a:link {
     text-decoration: none;
 }
 
-a:hover {
-    color: grey;
-}
-
 a:visited {
     color: white;
+}
+
+a:hover {
+    color: grey;
 }
