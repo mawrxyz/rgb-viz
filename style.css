@@ -11,6 +11,7 @@ body, html {
     width: 100%;
     padding-top: 56.25%; /* 16:9 Aspect Ratio */
     position: relative;
+    display: inline-block;
 }
 
 .image-layer {
@@ -32,18 +33,30 @@ body, html {
     display: flex;
     background: rgba(255, 255, 255, 0.75);
     border-radius: 5px;
-    padding: 5px;
+    overflow: hidden;
 }
 
 #toggle div {
-    padding: 5px 10px;
+    padding: 5px 20px;
     cursor: pointer;
     color: grey;
-    margin: 0 5px;
+    border-right: 2px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#toggle div:first-child {
+    border-radius: 5px 0 0 5px; 
+}
+
+#toggle div:last-child {
+    border-right: none; 
+    border-radius: 0 5px 5px 0;
 }
 
 #toggle div.active {
     font-weight: bold;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); 
 }
 
 #toggle div[data-layer="redLayer"].active {
@@ -67,11 +80,12 @@ body, html {
     background-color: rgba(0, 0, 0, 0.6);
     padding: 5px;
     border-radius: 5px;
-    bottom: 2%; 
-    right: 2%; 
+    bottom: 10px; 
+    right: 10px; 
     color: white; 
     font-size: 0.75em;
     font-family: Arial, sans-serif;
+    z-index: 1000;
 }
 
 #attribution :link {
