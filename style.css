@@ -30,7 +30,7 @@ body, html {
     bottom: 2vh;
     right: 2vw;
     width: 35vw;
-    height: 25vh;
+    height: 30vh;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -43,9 +43,12 @@ body, html {
     margin: 0;
     height: 15%;
     padding: 1vw;
-    font-size: 2vh;
+    font-size: 3vh;
+    font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5vh;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     z-index: 2;
     position: relative;
@@ -88,14 +91,16 @@ body, html {
     color: grey;
     border-right: 0.2vh solid #ccc;
     background-color: rgba(255, 255, 255, 0.5);
-    font-size: 3vh;
+    font-size: 4vh;
     flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     font-variant: small-caps;
-    -webkit-text-stroke: 0.05vh black;
+    -webkit-text-stroke: 0.1vh black;
+    paint-order: stroke fill;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 #toggle div:first-child {
@@ -109,7 +114,8 @@ body, html {
 
 #toggle div.active {
     background-color: rgba(255, 255, 255, 0.75);
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0px 0.4vh 0.8vh rgba(0, 0, 0, 0.3);
+    transform: translateY(-0.2vh);
 }
 
 #toggle div[data-layer="redLayer"].active {
