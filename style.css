@@ -25,27 +25,49 @@ body, html {
     mix-blend-mode: screen;
 }
 
-#bar-legend {
-    border: 2px red;
-    z-index: 1;
-}
-
 #bar-container {
     position: absolute;
     bottom: 2vh;
     right: 2vw;
-    width: 35%;
-    aspect-ratio: 16/9;
-    display: inline-block;
-    background-color: black;
+    width: 35vw;
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 
+}
+
+#bar-container p {
+    background-color: rgba(255, 255, 255, 0.6);
+    color: black;
+    margin: 0;
+    height: 15%;
+    padding: 1vw;
+    font-size: 2vh;
+    line-height: 1.5vh;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 2;
+    position: relative;
+}
+
+#bar-container #bar-wrapper {
+    position: relative;
+    background-color: black;
+    width: 100%;
+    height: 85%; /* Remaining space for bars (85% of the container) */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center; /* Centers the bars horizontally */
+    align-items: center; /* Centers the bars vertically */
 }
 
 .bars {
     position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    aspect-ratio: 16/9;
+    object-fit: fill;
     mix-blend-mode: screen;
 }
 
