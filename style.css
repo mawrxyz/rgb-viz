@@ -43,7 +43,7 @@ body, html {
     margin: 0;
     height: 15%;
     padding: 1vw;
-    font-size: 3vh;
+    font-size: 2vh;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5vh;
     display: flex;
@@ -76,8 +76,9 @@ body, html {
 
 #toggle {
     position: absolute;
-    top: 3vh;
+    top: 3.5vh;
     left: 50%;
+    max-width: 80%;
     transform: translateX(-50%);
     display: flex;
     background: rgba(255, 255, 255, 0.75);
@@ -91,7 +92,7 @@ body, html {
     color: grey;
     border-right: 0.2vh solid #ccc;
     background-color: rgba(255, 255, 255, 0.5);
-    font-size: 4vh;
+    font-size: 3vh;
     flex-grow: 1;
     display: flex;
     align-items: center;
