@@ -87,7 +87,7 @@ body, html {
 }
 
 #toggle div {
-    padding: 2vh 8vw;
+    padding: 2vh 6vw;
     cursor: pointer;
     color: grey;
     border-right: 0.2vh solid #ccc;
