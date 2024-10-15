@@ -1,19 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Get all elements with the layer classes (redLayer, greenLayer, blueLayer)
     const layers = {
-        redLayer: document.getElementById('redLayer'),
-        greenLayer: document.getElementById('greenLayer'),
-        blueLayer: document.getElementById('blueLayer')
+        redLayer: document.querySelectorAll('.redLayer'),
+        greenLayer: document.querySelectorAll('.greenLayer'),
+        blueLayer: document.querySelectorAll('.blueLayer')
     };
-    const allLayers = Object.values(layers);
 
-    // Function to toggle visibility of a layer
+    const allLayers = [...layers.redLayer, ...layers.greenLayer, ...layers.blueLayer];
+
+    // Function to toggle visibility of a layer (all elements with the same class)
     function toggleLayer(layer) {
-        const img = layers[layer];
-        if (img.style.display === 'block') {
-            img.style.display = 'none'; // Hide the layer if it is visible
-        } else {
-            img.style.display = 'block'; // Show the layer if it is hidden
-        }
+        layers[layer].forEach(img => {
+            if (img.style.display === 'block' || img.style.display === '') {
+                img.style.display = 'none'; // Hide the layer if it is visible
+            } else {
+                img.style.display = 'block'; // Show the layer if it is hidden
+            }
+        });
     }
 
     // Initially show all layers
