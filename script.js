@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Get all elements with the layer classes (redLayer, greenLayer, blueLayer)
     const layers = {
         redLayer: document.querySelectorAll('.redLayer'),
         greenLayer: document.querySelectorAll('.greenLayer'),
@@ -8,21 +7,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const allLayers = [...layers.redLayer, ...layers.greenLayer, ...layers.blueLayer];
 
-    // Function to toggle visibility of a layer
-    function toggleLayer(layer) {
-        layers[layer].forEach(img => {
-            if (img.style.display === 'block' || img.style.display === '') {
-                img.style.display = 'none'; // Hide the layer if visible
-            } else {
-                img.style.display = 'block'; // Show the layer if hidden
-            }
-        });
-    }
-
-    // Full-screen button elements
     const fullscreenButton = document.getElementById('fullscreen-button');
     const expandIcon = document.getElementById('expand-icon');
     const collapseIcon = document.getElementById('collapse-icon');
+
+    // Function to toggle visibility of a layer
+    function toggleLayer(layer) {
+        layers[layer].forEach(img => {
+            img.style.display = (img.style.display === 'block' || img.style.display === '')
+                ? 'none' : 'block'; // Toggle visibility
+        });
+    }
+
+    // Update tooltips dynamically for layer buttons
+    function updateTooltip(button) {
+        const dataLayer = button.getAttribute('data-layer');
+        const isActive = button.classList.contains('active');
+        const lightColor = dataLayer.replace('Layer', '').toLowerCase();
+        const action = isActive ? 'off' : 'on';
+        
+        const tooltipText = `Toggle ${lightColor} light ${action}`;
+        button.setAttribute('title', tooltipText); // Modify the tooltip
+    }
 
     // Toggle full-screen mode
     function toggleFullscreen() {
@@ -38,31 +44,33 @@ document.addEventListener('DOMContentLoaded', function() {
         const elem = document.documentElement;
         if (elem.requestFullscreen) {
             elem.requestFullscreen();
-        } else if (elem.mozRequestFullScreen) { // Firefox
+        } else if (elem.mozRequestFullScreen) {
             elem.mozRequestFullScreen();
-        } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        } else if (elem.webkitRequestFullscreen) {
             elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) { // IE/Edge
+        } else if (elem.msRequestFullscreen) {
             elem.msRequestFullscreen();
         }
         toggleIcons(true);
+        fullscreenButton.setAttribute('title', 'Exit fullscreen');
     }
 
     // Exit full-screen mode
     function exitFullscreen() {
         if (document.exitFullscreen) {
             document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) { // Firefox
+        } else if (document.mozCancelFullScreen) {
             document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+        } else if (document.webkitExitFullscreen) {
             document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) { // IE/Edge
+        } else if (document.msExitFullscreen) {
             document.msExitFullscreen();
         }
         toggleIcons(false);
+        fullscreenButton.setAttribute('title', 'Fullscreen');
     }
 
-    // Toggle the icons based on full-screen state
+    // Toggle icons based on full-screen state
     function toggleIcons(isFullscreen) {
         if (isFullscreen) {
             expandIcon.style.display = 'none';
@@ -75,29 +83,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Listen for full-screen changes
     document.addEventListener('fullscreenchange', () => {
-        toggleIcons(!!document.fullscreenElement);
+        const isFullscreen = !!document.fullscreenElement;
+        toggleIcons(isFullscreen);
+        fullscreenButton.setAttribute('title', isFullscreen ? 'Exit fullscreen' : 'Fullscreen');
     });
 
     // Add event listener to full-screen button
     fullscreenButton.addEventListener('click', toggleFullscreen);
 
-    // Function to show all layers on page load
+    // Show all layers on page load
     function showAllLayers() {
         allLayers.forEach(img => img.style.display = 'block');
     }
 
-    // Add event listeners to the toggle buttons
+    // Add event listeners to toggle buttons
     document.querySelectorAll('#toggle div').forEach(button => {
         button.addEventListener('click', function() {
-            // Toggle the active class for the button
-            button.classList.toggle('active');
-
-            // Toggle the corresponding layer visibility
-            const dataLayer = button.getAttribute('data-layer');
-            toggleLayer(dataLayer);
+            button.classList.toggle('active'); // Toggle active class
+            const dataLayer = button.getAttribute('data-layer'); // Get layer name
+            toggleLayer(dataLayer); // Toggle the corresponding layer
+            updateTooltip(button); // Update tooltip after each click
         });
+
+        // Initialize tooltips on page load
+        updateTooltip(button);
     });
 
-    // On page load, show all layers
+    // Show all layers on page load
     showAllLayers();
 });
