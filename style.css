@@ -1,4 +1,4 @@
-/* General Styles (Desktop / Large Screens) */
+/* General Styles (Landscape/Wide Layouts) */
 
 body, html {
     margin: 0;
@@ -173,9 +173,9 @@ body, html {
     justify-content: center;
 }
 
-/* --- Media Queries for Mobile Devices --- */
+/* --- Media Queries for Portrait Mode --- */
 
-@media (max-width: 768px) {
+@media (orientation: portrait) {
     #toggle {
         flex-direction: column;
         top: 2vh;
