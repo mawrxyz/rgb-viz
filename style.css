@@ -1,3 +1,5 @@
+/* General Styles (Desktop / Large Screens) */
+
 body, html {
     margin: 0;
     padding: 0;
@@ -25,78 +27,176 @@ body, html {
     mix-blend-mode: screen;
 }
 
+#fullscreenButton {
+    position: absolute;
+    top: 2vh; 
+    right: 2vw;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.7); 
+    color: white; 
+    border: none;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+#fullscreenButton svg {
+    fill: none;
+    stroke: currentColor; 
+    stroke-width: 2;
+}
+
+#bar-container {
+    position: absolute;
+    bottom: 2vh;
+    right: 2vw;
+    width: 35vw;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+#bar-container p {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: rgba(0, 0 0, 0.5);
+    margin: 0;
+    height: 20%;
+    padding: 1vw;
+    font-size: 4vh;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    z-index: 2;
+    position: relative;
+}
+
+#bar-container #bar-wrapper {
+    position: relative;
+    background-color: black;
+    width: 100%;
+    height: 80%; 
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.bars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16/9;
+    object-fit: fill;
+    mix-blend-mode: screen;
+}
+
 #toggle {
     position: absolute;
-    top: 2%;
+    top: 3.5vh;
     left: 50%;
+    max-width: 80%;
     transform: translateX(-50%);
     display: flex;
     background: rgba(255, 255, 255, 0.75);
-    border-radius: 5px;
+    border-radius: 1vh;
     overflow: hidden;
 }
 
 #toggle div {
-    padding: 5px 20px;
+    padding: 2vh 6vw;
     cursor: pointer;
     color: grey;
-    border-right: 2px solid #ccc;
-    background-color: rgba(255, 255, 255, 0.5);
+    border-right: 0.2vh solid #ccc;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 6vh;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: bold;
+    font-variant: small-caps;
+    -webkit-text-stroke: 0.3vh black;
+    paint-order: stroke fill;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 #toggle div:first-child {
-    border-radius: 5px 0 0 5px; 
+    border-radius: 1vh 0 0 1vh;
 }
 
 #toggle div:last-child {
     border-right: none; 
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 1vh 1vh 0;
 }
 
 #toggle div.active {
-    background-color: rgba(255, 255, 255, 1);
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); 
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0.4vh 0.8vh rgba(0, 0, 0, 0.3);
+    transform: translateY(-0.2vh);
 }
 
 #toggle div[data-layer="redLayer"].active {
-    color: red;
+    color: rgb(255, 0, 0);
 }
 
 #toggle div[data-layer="greenLayer"].active {
-    color: green;
+    color: rgb(0, 255, 0);
 }
 
 #toggle div[data-layer="blueLayer"].active {
-    color: blue;
+    color: rgb(0, 0 , 255);
 }
 
 #toggle div:hover {
     opacity:60%;
 }
 
-#attribution {
+#fullscreen-button {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 5px;
-    border-radius: 5px;
-    bottom: 10px; 
-    right: 10px; 
-    color: white; 
-    font-size: 0.75em;
-    font-family: Arial, sans-serif;
-    z-index: 1000;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.25);
+    border: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: transform 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-a:link {
-    color: white;
-    text-decoration: none;
-}
+/* --- Media Queries for Mobile Devices --- */
 
-a:visited {
-    color: white;
-}
+@media (max-width: 768px) {
+    #toggle {
+        flex-direction: column;
+        top: 2vh;
+        left: 5vw;
+        transform: none; 
+        width: 90%; 
+    }
 
-a:hover {
-    color: grey;
+    #toggle div {
+        padding: 2vh 0;
+        font-size: 4vh; 
+        border-right: none;
+        border-bottom: 0.2vh solid #ccc; 
+    }
+
+    #toggle div:last-child {
+        border-bottom: none;
+    }
+
+    #bar-container p {
+        font-size: 3vh; 
+        line-height: 2vh; 
+    }
 }
