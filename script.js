@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const lightColor = dataLayer.replace('Layer', '').toLowerCase();
         const action = isActive ? 'off' : 'on';
         
-        const tooltipText = `Toggle ${lightColor} light ${action}`;
+        const tooltipText = `Toggle ${lightColor} visibility ${action}`;
         button.setAttribute('title', tooltipText); // Modify the tooltip
     }
 
