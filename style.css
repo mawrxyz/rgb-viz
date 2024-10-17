@@ -25,6 +25,26 @@ body, html {
     mix-blend-mode: screen;
 }
 
+#fullscreenButton {
+    position: absolute;
+    top: 2vh; /* Position the button at the bottom-right corner */
+    right: 2vw;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: white; /* White icon */
+    border: none;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+#fullscreenButton svg {
+    fill: none;
+    stroke: currentColor; /* Use current text color for stroke */
+    stroke-width: 2;
+}
+
 #bar-container {
     position: absolute;
     bottom: 2vh;
@@ -34,16 +54,15 @@ body, html {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-
 }
 
 #bar-container p {
     background-color: rgba(255, 255, 255, 0.5);
     color: rgba(0, 0 0, 0.5);
     margin: 0;
-    height: 15%;
+    height: 20%;
     padding: 1vw;
-    font-size: 2vh;
+    font-size: 4vh;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5vh;
     display: flex;
@@ -58,7 +77,7 @@ body, html {
     position: relative;
     background-color: black;
     width: 100%;
-    height: 85%; /* Remaining space for bars (85% of the container) */
+    height: 80%; /* Remaining space for bars (85% of the container) */
     box-sizing: border-box;
     display: flex;
     justify-content: center; /* Centers the bars horizontally */
@@ -92,14 +111,14 @@ body, html {
     color: grey;
     border-right: 0.2vh solid #ccc;
     background-color: rgba(255, 255, 255, 0.2);
-    font-size: 3vh;
+    font-size: 6vh;
     flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     font-variant: small-caps;
-    -webkit-text-stroke: 0.1vh black;
+    -webkit-text-stroke: 0.3vh black;
     paint-order: stroke fill;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
@@ -135,20 +154,8 @@ body, html {
     opacity:60%;
 }
 
-#attribution {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 5px;
-    border-radius: 5px;
-    bottom: 10px; 
-    right: 10px; 
-    color: white; 
-    font-size: 0.75em;
-    font-family: Arial, sans-serif;
-    z-index: 1000;
-}
 
-a:link {
+/* a:link {
     color: white;
     text-decoration: none;
 }
@@ -159,4 +166,21 @@ a:visited {
 
 a:hover {
     color: grey;
+} */
+
+#fullscreen-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.25);
+    border: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: transform 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

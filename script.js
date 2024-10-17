@@ -19,6 +19,75 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    document.getElementById('fullscreenButton').addEventListener('click', function() {
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
+            document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari, and Opera */
+            document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
+            document.documentElement.msRequestFullscreen();
+        }
+    });
+
+    const fullscreenButton = document.getElementById('fullscreen-button');
+const expandIcon = document.getElementById('expand-icon');
+const collapseIcon = document.getElementById('collapse-icon');
+
+fullscreenButton.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+        enterFullscreen();
+    } else {
+        exitFullscreen();
+    }
+});
+
+function enterFullscreen() {
+    const elem = document.documentElement;
+
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { // Firefox
+        elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { // IE/Edge
+        elem.msRequestFullscreen();
+    }
+
+    toggleIcons(true);
+}
+
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) { // Firefox
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { // IE/Edge
+        document.msExitFullscreen();
+    }
+
+    toggleIcons(false);
+}
+
+function toggleIcons(isFullscreen) {
+    if (isFullscreen) {
+        expandIcon.style.display = 'none';
+        collapseIcon.style.display = 'block';
+    } else {
+        expandIcon.style.display = 'block';
+        collapseIcon.style.display = 'none';
+    }
+}
+
+// Listen for full-screen changes and update icons accordingly
+document.addEventListener('fullscreenchange', () => {
+    toggleIcons(!!document.fullscreenElement);
+});
+
     // Initially show all layers
     function showAllLayers() {
         allLayers.forEach(img => img.style.display = 'block');
