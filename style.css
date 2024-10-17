@@ -158,12 +158,12 @@ body, html {
 
 #fullscreen-button {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 2vh;
+    right: 2vw;
+    width: 5vh;
+    height: 5vh;
     background: rgba(255, 255, 255, 0.25);
     border: 0;
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
     box-sizing: border-box;
     transition: transform 0.3s;
@@ -178,9 +178,9 @@ body, html {
 @media (orientation: portrait) {
     #toggle {
         flex-direction: column;
-        top: 2vh;
-        left: 5vw;
-        transform: none; 
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%); 
         width: 90%; 
     }
 
@@ -198,5 +198,12 @@ body, html {
     #bar-container p {
         font-size: 3vh; 
         line-height: 2vh; 
+    }
+
+    #fullscreen-button {
+        top: 2vh; /* Move to bottom-left corner */
+        right: 2vw;
+        width: 4vh; /* Smaller size for mobile */
+        height: 4vh;
     }
 }
