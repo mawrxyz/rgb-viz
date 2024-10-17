@@ -160,8 +160,8 @@ body, html {
     position: absolute;
     top: 2vh;
     right: 2vw;
-    width: 6vh;
-    height: 6vh;
+    width: 40px;
+    height: 40px;
     background: rgba(255, 255, 255, 0.25);
     border: 0;
     border-radius: 50%;
@@ -201,9 +201,9 @@ body, html {
     }
 
     #fullscreen-button {
-        top: 2vh; /* Move to bottom-left corner */
+        top: 2vh;
         right: 2vw;
-        width: 4vh; /* Smaller size for mobile */
+        width: 4vh;
         height: 4vh;
     }
 }
